@@ -1,4 +1,10 @@
 name: AlwaysDay
 version: '1.0'
 main: com.me.alwaysDay.AlwaysDay
-api-version: '1.21'
+description: 'A simple plugin to keep it always day in your world'
+commands:
+  alwaysday:
+    description: Toggle always day mode
+    usage: /alwaysday [on|off]
+    permission: alwaysday.use
+    permission-message: You don't have permission to use this command
