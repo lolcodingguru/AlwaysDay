@@ -1,0 +1,4 @@
+name: AlwaysDay
+version: '1.0'
+main: com.me.alwaysDay.AlwaysDay
+api-version: '1.21'
