@@ -15,11 +15,27 @@ public final class AlwaysDay extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // Save default config if it doesn't exist
+        saveDefaultConfig();
+
+        // Load alwaysDay state from config
+        alwaysDayEnabled = getConfig().getBoolean("enabled", false);
+
+        // If it was enabled before server restart, start the day task
+        if (alwaysDayEnabled) {
+            startDayTask();
+        }
+
         getLogger().info("AlwaysDay plugin enabled. Use /alwaysday [on|off] to toggle.");
+        getLogger().info("AlwaysDay is currently " + (alwaysDayEnabled ? "enabled" : "disabled") + ".");
     }
 
     @Override
     public void onDisable() {
+        // Save current state to config
+        getConfig().set("enabled", alwaysDayEnabled);
+        saveConfig();
+
         stopDayTask();
         getLogger().info("AlwaysDay plugin disabled.");
     }
@@ -44,6 +60,9 @@ public final class AlwaysDay extends JavaPlugin {
                     sender.sendMessage(ChatColor.YELLOW + "AlwaysDay is already enabled.");
                 } else {
                     alwaysDayEnabled = true;
+                    // Save state to config
+                    getConfig().set("enabled", true);
+                    saveConfig();
                     startDayTask();
                     sender.sendMessage(ChatColor.GREEN + "AlwaysDay enabled. It will always be day now.");
                 }
@@ -55,6 +74,9 @@ public final class AlwaysDay extends JavaPlugin {
                     sender.sendMessage(ChatColor.YELLOW + "AlwaysDay is already disabled.");
                 } else {
                     alwaysDayEnabled = false;
+                    // Save state to config
+                    getConfig().set("enabled", false);
+                    saveConfig();
                     stopDayTask();
                     sender.sendMessage(ChatColor.GREEN + "AlwaysDay disabled. Time will flow normally.");
                 }

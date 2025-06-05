@@ -1,5 +1,5 @@
 name: AlwaysDay
-version: '1.0'
+version: '1.1'
 main: com.me.alwaysDay.AlwaysDay
 description: 'A simple plugin to keep it always day in your world'
 commands:
