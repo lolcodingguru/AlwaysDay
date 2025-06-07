@@ -4,7 +4,7 @@ main: com.me.alwaysDay.AlwaysDay
 description: 'A simple plugin to keep it always day in your world'
 commands:
   alwaysday:
-    description: Toggle always day mode
-    usage: /alwaysday [on|off]
+    description: Toggle always day mode and weather control
+    usage: /alwaysday [on|off] or /alwaysday noweather [on|off]
     permission: alwaysday.use
     permission-message: You don't have permission to use this command
